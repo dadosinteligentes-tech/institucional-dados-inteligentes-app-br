@@ -2,9 +2,19 @@ import { useState } from "react";
 import "./index.css";
 import LGPDDiagnostic from "./LGPDDiagnostic";
 import logo from "./assets/logo-marca-dadosinteligentes.svg";
+import { useScrollAnimation } from "./useScrollAnimation";
 
 function App() {
 	const [showDiagnostic, setShowDiagnostic] = useState(false);
+
+	// Refs for scroll animations
+	const heroRef = useScrollAnimation();
+	const techRef = useScrollAnimation();
+	const transformationRef = useScrollAnimation();
+	const servicesRef = useScrollAnimation();
+	const journeyRef = useScrollAnimation();
+	const caseStudyRef = useScrollAnimation();
+	const finalCTARef = useScrollAnimation();
 
 	const scrollToCTA = () => {
 		document.getElementById('cta')?.scrollIntoView({ behavior: 'smooth' });
@@ -28,7 +38,7 @@ function App() {
 		<>
 			{/* Hero Section */}
 			<section className="hero">
-				<div className="container">
+				<div ref={heroRef} className="container fade-in">
 					<div className="hero-logo">
 						<img src={logo} alt="Dados Inteligentes" />
 					</div>
@@ -45,15 +55,12 @@ function App() {
 			<section className="trust-bar">
 				<div className="container">
 					<p>Tecnologias de Engenharia de Dados que dominamos</p>
-					<div className="tech-logos">
+					<div ref={techRef} className="tech-logos slide-up stagger-children">
 						<div className="tech-logo">
 							<img src="https://www.vectorlogo.zone/logos/oracle/oracle-icon.svg" alt="Oracle" />
 						</div>
 						<div className="tech-logo">
 							<img src="https://www.vectorlogo.zone/logos/cloudera/cloudera-icon.svg" alt="Cloudera" />
-						</div>
-						<div className="tech-logo">
-							<img src="https://www.vectorlogo.zone/logos/google_bigquery/google_bigquery-icon.svg" alt="Google BigQuery" />
 						</div>
 						<div className="tech-logo">
 							Apache Iceberg
@@ -120,7 +127,7 @@ function App() {
 			<section className="transformation">
 				<div className="container">
 					<h2>A LGPD não é o fim da linha. É o começo de tudo.</h2>
-					<div className="transformation-grid">
+					<div ref={transformationRef} className="transformation-grid scale-up stagger-children">
 						<div className="transformation-card card-security">
 							<h3><span className="icon">🛡️</span> Primeiro, a Segurança</h3>
 							<p>Proteja sua empresa de multas que podem chegar a R$ 50 milhões e preserve sua reputação no mercado. Nossa adequação à LGPD resolve isso de forma eficiente, criando uma base de dados organizada, mapeada e segura.</p>
@@ -142,7 +149,7 @@ function App() {
 			<section className="services">
 				<div className="container">
 					<h2>Nossa expertise, seus resultados</h2>
-					<div className="services-grid">
+					<div ref={servicesRef} className="services-grid slide-up stagger-children">
 						<div className="service-card">
 							<h3>Conformidade & Governança de Dados</h3>
 							<p>Mapeamento completo, implementação de políticas e monitoramento contínuo para total adequação à LGPD. Proteja seu negócio e construa uma base sólida de dados.</p>
@@ -163,7 +170,7 @@ function App() {
 			<section className="journey">
 				<div className="container">
 					<h2>Sua jornada de transformação de dados em 4 fases</h2>
-					<div className="journey-steps">
+					<div ref={journeyRef} className="journey-steps slide-up stagger-children">
 						<div className="step">
 							<div className="step-number">1</div>
 							<h4>Diagnóstico de Maturidade</h4>
@@ -190,7 +197,7 @@ function App() {
 
 			{/* Case Study */}
 			<section className="case-study">
-				<div className="container">
+				<div ref={caseStudyRef} className="container slide-up">
 					<h2>Como uma empresa saiu do risco de multas para um aumento de 20% em eficiência</h2>
 					<div className="case-content">
 						<h3>O Desafio</h3>
@@ -211,7 +218,7 @@ function App() {
 
 			{/* Final CTA */}
 			<section className="final-cta" id="cta">
-				<div className="container">
+				<div ref={finalCTARef} className="container scale-up">
 					<h2>Pronto para ter segurança jurídica e dados que trabalham para você?</h2>
 					<p>Agende seu Diagnóstico de Maturidade de Dados & LGPD. É gratuito e o primeiro passo para transformar seu negócio.</p>
 					<button className="cta-button" onClick={handleCTA}>
