@@ -1,19 +1,37 @@
+import { useState } from "react";
 import "./index.css";
+import LGPDDiagnostic from "./LGPDDiagnostic";
+import logo from "./assets/logo-marca-dadosinteligentes.svg";
 
 function App() {
+	const [showDiagnostic, setShowDiagnostic] = useState(false);
+
 	const scrollToCTA = () => {
 		document.getElementById('cta')?.scrollIntoView({ behavior: 'smooth' });
 	};
 
 	const handleCTA = () => {
-		alert('Em produção, aqui você seria direcionado para um formulário de contato ou agendamento.');
+		setShowDiagnostic(true);
+		window.scrollTo(0, 0);
 	};
+
+	const handleBackToHome = () => {
+		setShowDiagnostic(false);
+		window.scrollTo(0, 0);
+	};
+
+	if (showDiagnostic) {
+		return <LGPDDiagnostic onBack={handleBackToHome} />;
+	}
 
 	return (
 		<>
 			{/* Hero Section */}
 			<section className="hero">
 				<div className="container">
+					<div className="hero-logo">
+						<img src={logo} alt="Dados Inteligentes" />
+					</div>
 					<h1>Proteja-se de multas da LGPD e construa a base para uma empresa guiada por dados</h1>
 					<p>Da conformidade legal à inteligência de negócio. Soluções completas em LGPD, Engenharia de Dados e Desenvolvimento de Software para PMEs.</p>
 					<button className="cta-button" onClick={scrollToCTA}>
@@ -205,7 +223,33 @@ function App() {
 			{/* Footer */}
 			<footer>
 				<div className="container">
-					<p>&copy; 2025 Dados Inteligentes Ltda. Todos os direitos reservados.</p>
+					<div className="footer-logo">
+						<img src={logo} alt="Dados Inteligentes" />
+					</div>
+					<div className="footer-content">
+						<div className="footer-section">
+							<h4>Dados Inteligentes Ltda.</h4>
+							<p>CNPJ: 47.773.826/0001-57</p>
+						</div>
+						<div className="footer-section">
+							<h4>Endereço</h4>
+							<p>Av dos Holandeses, 7</p>
+							<p>Edif Metr. Market Place - Sala 507</p>
+							<p>São Luís - MA</p>
+							<p>CEP: 65.071-380</p>
+						</div>
+						<div className="footer-section">
+							<h4>Contato</h4>
+							<p>
+								<a href="mailto:contato@dadosinteligentes.app.br">
+									contato@dadosinteligentes.app.br
+								</a>
+							</p>
+						</div>
+					</div>
+					<div className="footer-copyright">
+						<p>&copy; 2025 Dados Inteligentes Ltda. Todos os direitos reservados.</p>
+					</div>
 				</div>
 			</footer>
 		</>

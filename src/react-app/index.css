@@ -25,6 +25,22 @@ body {
 	text-align: center;
 }
 
+.hero-logo {
+	margin-bottom: 40px;
+}
+
+.hero-logo img {
+	max-width: 600px;
+	height: auto;
+	filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+}
+
+@media (max-width: 768px) {
+	.hero-logo img {
+		max-width: 350px;
+	}
+}
+
 .hero h1 {
 	font-size: 2.5em;
 	margin-bottom: 20px;
@@ -337,8 +353,62 @@ body {
 footer {
 	background: #111827;
 	color: white;
-	padding: 30px 20px;
+	padding: 50px 20px 30px;
+}
+
+.footer-logo {
 	text-align: center;
+	margin-bottom: 40px;
+}
+
+.footer-logo img {
+	max-width: 250px;
+	height: auto;
+	filter: brightness(0) invert(1);
+	opacity: 0.9;
+}
+
+.footer-content {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	gap: 40px;
+	margin-bottom: 40px;
+	text-align: left;
+}
+
+.footer-section h4 {
+	color: #fbbf24;
+	font-size: 1.1em;
+	margin-bottom: 15px;
+	font-weight: 600;
+}
+
+.footer-section p {
+	color: #d1d5db;
+	margin-bottom: 8px;
+	line-height: 1.6;
+}
+
+.footer-section a {
+	color: #93c5fd;
+	text-decoration: none;
+	transition: color 0.2s;
+}
+
+.footer-section a:hover {
+	color: #60a5fa;
+	text-decoration: underline;
+}
+
+.footer-copyright {
+	border-top: 1px solid #374151;
+	padding-top: 20px;
+	text-align: center;
+}
+
+.footer-copyright p {
+	color: #9ca3af;
+	font-size: 0.9em;
 }
 
 @media (max-width: 768px) {
@@ -352,5 +422,306 @@ footer {
 
 	.journey-steps {
 		grid-template-columns: 1fr;
+	}
+}
+
+/* Diagnostic Styles */
+.diagnostic-container {
+	min-height: 100vh;
+	background: linear-gradient(135deg, #eff6ff 0%, #e0e7ff 100%);
+	padding: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.diagnostic-card {
+	max-width: 800px;
+	width: 100%;
+	background: white;
+	border-radius: 16px;
+	box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+	padding: 40px;
+}
+
+.diagnostic-progress-section {
+	margin-bottom: 30px;
+}
+
+.diagnostic-progress-text {
+	display: flex;
+	justify-content: space-between;
+	font-size: 0.875rem;
+	color: #6b7280;
+	margin-bottom: 10px;
+}
+
+.diagnostic-progress-bar-bg {
+	width: 100%;
+	background-color: #e5e7eb;
+	border-radius: 9999px;
+	height: 8px;
+}
+
+.diagnostic-progress-bar {
+	background-color: #667eea;
+	height: 8px;
+	border-radius: 9999px;
+	transition: width 0.3s ease;
+}
+
+.diagnostic-category-badge-container {
+	margin-bottom: 10px;
+}
+
+.diagnostic-category-badge {
+	display: inline-block;
+	background-color: #e0e7ff;
+	color: #5145cd;
+	font-size: 0.875rem;
+	padding: 6px 16px;
+	border-radius: 9999px;
+	font-weight: 600;
+}
+
+.diagnostic-question {
+	font-size: 1.5rem;
+	font-weight: 700;
+	color: #1f2937;
+	margin-bottom: 30px;
+}
+
+.diagnostic-options {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.diagnostic-option-button {
+	width: 100%;
+	text-align: left;
+	padding: 16px;
+	border: 2px solid #e5e7eb;
+	border-radius: 8px;
+	background: white;
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+.diagnostic-option-button:hover {
+	border-color: #667eea;
+	background-color: #f5f3ff;
+}
+
+.diagnostic-option-content {
+	display: flex;
+	align-items: center;
+}
+
+.diagnostic-option-radio {
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	border: 2px solid #d1d5db;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-right: 12px;
+	transition: border-color 0.2s;
+}
+
+.diagnostic-option-button:hover .diagnostic-option-radio {
+	border-color: #667eea;
+}
+
+.diagnostic-option-radio-inner {
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	background-color: transparent;
+	transition: background-color 0.2s;
+}
+
+.diagnostic-option-button:hover .diagnostic-option-radio-inner {
+	background-color: #667eea;
+}
+
+.diagnostic-option-text {
+	color: #374151;
+	font-weight: 500;
+}
+
+.diagnostic-option-button:hover .diagnostic-option-text {
+	color: #1f2937;
+}
+
+.diagnostic-result-header {
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+.diagnostic-icon-container {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 20px;
+}
+
+.diagnostic-title {
+	font-size: 1.875rem;
+	font-weight: 700;
+	color: #1f2937;
+	margin-bottom: 10px;
+}
+
+.diagnostic-percentage {
+	font-size: 3.75rem;
+	font-weight: 700;
+	color: #667eea;
+	margin-bottom: 10px;
+}
+
+.diagnostic-level {
+	font-size: 1.25rem;
+	font-weight: 600;
+}
+
+.diagnostic-level-green {
+	color: #059669;
+}
+
+.diagnostic-level-yellow {
+	color: #d97706;
+}
+
+.diagnostic-level-orange {
+	color: #ea580c;
+}
+
+.diagnostic-level-red {
+	color: #dc2626;
+}
+
+.diagnostic-message-box {
+	margin-bottom: 30px;
+	padding: 20px;
+	background-color: #f9fafb;
+	border-radius: 8px;
+}
+
+.diagnostic-message {
+	color: #374151;
+	text-align: center;
+}
+
+.diagnostic-recommendations {
+	margin-bottom: 40px;
+}
+
+.diagnostic-recommendations-title {
+	font-size: 1.125rem;
+	font-weight: 600;
+	color: #1f2937;
+	margin-bottom: 15px;
+}
+
+.diagnostic-recommendations-list {
+	list-style: none;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.diagnostic-recommendation-item {
+	display: flex;
+	align-items: flex-start;
+}
+
+.diagnostic-chevron {
+	width: 20px;
+	height: 20px;
+	color: #667eea;
+	margin-right: 8px;
+	flex-shrink: 0;
+	margin-top: 2px;
+}
+
+.diagnostic-recommendation-item span {
+	color: #374151;
+}
+
+.diagnostic-actions {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.diagnostic-button {
+	background-color: #667eea;
+	color: white;
+	padding: 16px 32px;
+	border-radius: 8px;
+	font-weight: 600;
+	border: none;
+	cursor: pointer;
+	transition: background-color 0.2s;
+}
+
+.diagnostic-button:hover {
+	background-color: #5145cd;
+}
+
+.diagnostic-button-secondary {
+	background-color: #6b7280;
+}
+
+.diagnostic-button-secondary:hover {
+	background-color: #4b5563;
+}
+
+.diagnostic-score-text {
+	margin-top: 30px;
+	font-size: 0.75rem;
+	color: #9ca3af;
+	text-align: center;
+}
+
+.diagnostic-back-container {
+	margin-top: 30px;
+	text-align: center;
+}
+
+.diagnostic-back-button {
+	background-color: transparent;
+	color: #667eea;
+	padding: 12px 24px;
+	border: 2px solid #667eea;
+	border-radius: 8px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.2s;
+}
+
+.diagnostic-back-button:hover {
+	background-color: #667eea;
+	color: white;
+}
+
+@media (max-width: 640px) {
+	.diagnostic-card {
+		padding: 24px;
+	}
+
+	.diagnostic-question {
+		font-size: 1.25rem;
+	}
+
+	.diagnostic-title {
+		font-size: 1.5rem;
+	}
+
+	.diagnostic-percentage {
+		font-size: 3rem;
 	}
 }
