@@ -1,68 +1,334 @@
-:root {
-	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-	line-height: 1.5;
-	font-weight: 400;
-
-	color-scheme: light dark;
-	color: rgba(255, 255, 255, 0.87);
-	background-color: #242424;
-
-	font-synthesis: none;
-	text-rendering: optimizeLegibility;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
-
-a {
-	font-weight: 500;
-	color: #646cff;
-	text-decoration: inherit;
-}
-a:hover {
-	color: #535bf2;
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 body {
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+	line-height: 1.6;
+	color: #333;
 	margin: 0;
-	display: flex;
-	place-items: center;
-	min-width: 320px;
-	min-height: 100vh;
 }
 
-h1 {
-	font-size: 3.2em;
-	line-height: 1.1;
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 20px;
 }
 
-button {
+/* Hero Section */
+.hero {
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	color: white;
+	padding: 80px 20px;
+	text-align: center;
+}
+
+.hero h1 {
+	font-size: 2.5em;
+	margin-bottom: 20px;
+	font-weight: 700;
+}
+
+.hero p {
+	font-size: 1.2em;
+	margin-bottom: 30px;
+	opacity: 0.95;
+}
+
+.cta-button {
+	background: #fbbf24;
+	color: #1f2937;
+	padding: 18px 40px;
+	border: none;
 	border-radius: 8px;
-	border: 1px solid transparent;
-	padding: 0.6em 1.2em;
-	font-size: 1em;
-	font-weight: 500;
-	font-family: inherit;
-	background-color: #1a1a1a;
+	font-size: 1.1em;
+	font-weight: 600;
 	cursor: pointer;
-	transition: border-color 0.25s;
-}
-button:hover {
-	border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-	outline: 4px auto -webkit-focus-ring-color;
+	transition: transform 0.2s, box-shadow 0.2s;
+	display: inline-block;
+	text-decoration: none;
 }
 
-@media (prefers-color-scheme: light) {
-	:root {
-		color: #213547;
-		background-color: #ffffff;
+.cta-button:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.cta-subtext {
+	margin-top: 15px;
+	font-size: 0.9em;
+	opacity: 0.9;
+}
+
+/* Trust Bar */
+.trust-bar {
+	background: #f9fafb;
+	padding: 40px 20px;
+	text-align: center;
+	border-bottom: 1px solid #e5e7eb;
+}
+
+.trust-bar p {
+	color: #6b7280;
+	margin-bottom: 20px;
+	font-weight: 500;
+}
+
+.tech-logos {
+	display: flex;
+	justify-content: center;
+	gap: 30px;
+	flex-wrap: wrap;
+}
+
+.tech-logo {
+	padding: 10px 20px;
+	background: white;
+	border-radius: 8px;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+	font-weight: 600;
+	color: #4b5563;
+}
+
+/* Transformation Section */
+.transformation {
+	padding: 80px 20px;
+	background: white;
+}
+
+.transformation h2 {
+	text-align: center;
+	font-size: 2.2em;
+	margin-bottom: 50px;
+	color: #1f2937;
+}
+
+.transformation-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 40px;
+	max-width: 1000px;
+	margin: 0 auto;
+}
+
+.transformation-card {
+	padding: 40px;
+	border-radius: 12px;
+	box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.card-security {
+	background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+}
+
+.card-growth {
+	background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+}
+
+.transformation-card h3 {
+	font-size: 1.8em;
+	margin-bottom: 15px;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.icon {
+	font-size: 1.2em;
+}
+
+.transformation-card p {
+	font-size: 1.05em;
+	line-height: 1.8;
+}
+
+.transformation-card ul {
+	list-style: none;
+	margin-top: 20px;
+}
+
+.transformation-card li {
+	padding: 8px 0;
+	padding-left: 25px;
+	position: relative;
+}
+
+.transformation-card li:before {
+	content: "✓";
+	position: absolute;
+	left: 0;
+	color: #059669;
+	font-weight: bold;
+}
+
+/* Services Section */
+.services {
+	padding: 80px 20px;
+	background: #f9fafb;
+}
+
+.services h2 {
+	text-align: center;
+	font-size: 2.2em;
+	margin-bottom: 50px;
+	color: #1f2937;
+}
+
+.services-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 30px;
+}
+
+.service-card {
+	background: white;
+	padding: 40px;
+	border-radius: 12px;
+	box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+	transition: transform 0.3s;
+}
+
+.service-card:hover {
+	transform: translateY(-5px);
+}
+
+.service-card h3 {
+	font-size: 1.5em;
+	margin-bottom: 15px;
+	color: #667eea;
+}
+
+/* Journey Section */
+.journey {
+	padding: 80px 20px;
+	background: white;
+}
+
+.journey h2 {
+	text-align: center;
+	font-size: 2.2em;
+	margin-bottom: 50px;
+	color: #1f2937;
+}
+
+.journey-steps {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	gap: 30px;
+	max-width: 1100px;
+	margin: 0 auto;
+}
+
+.step {
+	text-align: center;
+	padding: 30px;
+}
+
+.step-number {
+	width: 60px;
+	height: 60px;
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	color: white;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.5em;
+	font-weight: bold;
+	margin: 0 auto 20px;
+}
+
+.step h4 {
+	font-size: 1.3em;
+	margin-bottom: 10px;
+	color: #1f2937;
+}
+
+.step p {
+	color: #6b7280;
+}
+
+/* Case Study */
+.case-study {
+	padding: 80px 20px;
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	color: white;
+}
+
+.case-study h2 {
+	text-align: center;
+	font-size: 2.2em;
+	margin-bottom: 40px;
+}
+
+.case-content {
+	max-width: 900px;
+	margin: 0 auto;
+	background: rgba(255,255,255,0.1);
+	padding: 40px;
+	border-radius: 12px;
+	backdrop-filter: blur(10px);
+}
+
+.case-content h3 {
+	font-size: 1.5em;
+	margin-top: 30px;
+	margin-bottom: 15px;
+}
+
+.case-content p {
+	font-size: 1.1em;
+	line-height: 1.8;
+	margin-bottom: 20px;
+}
+
+.testimonial {
+	background: rgba(255,255,255,0.15);
+	padding: 25px;
+	border-radius: 8px;
+	margin-top: 30px;
+	font-style: italic;
+}
+
+/* Final CTA */
+.final-cta {
+	padding: 80px 20px;
+	background: #1f2937;
+	color: white;
+	text-align: center;
+}
+
+.final-cta h2 {
+	font-size: 2.5em;
+	margin-bottom: 20px;
+}
+
+.final-cta p {
+	font-size: 1.2em;
+	margin-bottom: 40px;
+	opacity: 0.9;
+}
+
+/* Footer */
+footer {
+	background: #111827;
+	color: white;
+	padding: 30px 20px;
+	text-align: center;
+}
+
+@media (max-width: 768px) {
+	.hero h1 {
+		font-size: 1.8em;
 	}
-	a:hover {
-		color: #747bff;
+
+	.transformation-grid {
+		grid-template-columns: 1fr;
 	}
-	button {
-		background-color: #f9f9f9;
+
+	.journey-steps {
+		grid-template-columns: 1fr;
 	}
 }
