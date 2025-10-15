@@ -26,13 +26,74 @@ function App() {
 			{/* Trust Bar */}
 			<section className="trust-bar">
 				<div className="container">
-					<p>Tecnologias e parceiros confiáveis</p>
+					<p>Tecnologias de Engenharia de Dados que dominamos</p>
 					<div className="tech-logos">
-						<div className="tech-logo">AWS</div>
-						<div className="tech-logo">Google Cloud</div>
-						<div className="tech-logo">Azure</div>
-						<div className="tech-logo">Python</div>
-						<div className="tech-logo">PostgreSQL</div>
+						<div className="tech-logo">
+							<img src="https://www.vectorlogo.zone/logos/oracle/oracle-icon.svg" alt="Oracle" />
+						</div>
+						<div className="tech-logo">
+							<img src="https://www.vectorlogo.zone/logos/cloudera/cloudera-icon.svg" alt="Cloudera" />
+						</div>
+						<div className="tech-logo">
+							<img src="https://www.vectorlogo.zone/logos/google_bigquery/google_bigquery-icon.svg" alt="Google BigQuery" />
+						</div>
+						<div className="tech-logo">
+							Apache Iceberg
+						</div>
+						<div className="tech-logo">
+							<img src="https://www.vectorlogo.zone/logos/python/python-icon.svg" alt="Python" />
+						</div>
+						<div className="tech-logo">
+							<img src="https://www.vectorlogo.zone/logos/java/java-icon.svg" alt="Java" />
+						</div>
+						<div className="tech-logo">
+							<img src="https://www.vectorlogo.zone/logos/golang/golang-icon.svg" alt="Golang" />
+						</div>
+						<div className="tech-logo">
+							<img src="https://upload.wikimedia.org/wikipedia/commons/d/de/AirflowLogo.png" alt="Apache Airflow" />
+						</div>
+						<div className="tech-logo">
+							<img src="https://superset.apache.org/img/superset-logo-horiz-apache.svg" alt="Apache Superset" />
+						</div>
+						<div className="tech-logo">
+							<img src="https://www.vectorlogo.zone/logos/apache_hadoop/apache_hadoop-icon.svg" alt="Apache Hadoop" />
+						</div>
+						<div className="tech-logo">
+							<img src="https://www.vectorlogo.zone/logos/apache_spark/apache_spark-icon.svg" alt="Apache Spark" />
+						</div>
+						<div className="tech-logo">
+							<img src="https://www.vectorlogo.zone/logos/apache_kafka/apache_kafka-icon.svg" alt="Apache Kafka" />
+						</div>
+						<div className="tech-logo">
+							<img src="https://www.vectorlogo.zone/logos/postgresql/postgresql-icon.svg" alt="PostgreSQL" />
+						</div>
+						<div className="tech-logo">
+							<img src="https://www.vectorlogo.zone/logos/apache_nifi/apache_nifi-icon.svg" alt="Apache NiFi" />
+						</div>
+						<div className="tech-logo">
+							Trino
+						</div>
+						<div className="tech-logo">
+							<img src="https://www.vectorlogo.zone/logos/elastic/elastic-icon.svg" alt="Elasticsearch" />
+						</div>
+						<div className="tech-logo">
+							<img src="https://www.vectorlogo.zone/logos/minioio/minioio-icon.svg" alt="MinIO" />
+						</div>
+						<div className="tech-logo">
+							Delta Lake
+						</div>
+						<div className="tech-logo">
+							<img src="https://seeklogo.com/images/D/dbt-logo-500AB0BAA7-seeklogo.com.png" alt="dbt" />
+						</div>
+						<div className="tech-logo">
+							<img src="https://www.vectorlogo.zone/logos/docker/docker-icon.svg" alt="Docker" />
+						</div>
+						<div className="tech-logo">
+							<img src="https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg" alt="Kubernetes" />
+						</div>
+						<div className="tech-logo">
+							<img src="https://www.vectorlogo.zone/logos/redis/redis-icon.svg" alt="Redis" />
+						</div>
 					</div>
 				</div>
 			</section>
