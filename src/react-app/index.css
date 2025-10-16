@@ -1348,6 +1348,106 @@ footer {
 	color: white;
 }
 
+/* Selected option state */
+.diagnostic-option-selected {
+	border-color: var(--color-neon-green) !important;
+	background: linear-gradient(135deg, rgba(196, 255, 0, 0.15) 0%, rgba(196, 255, 0, 0.08) 100%) !important;
+	box-shadow: 0 10px 30px rgba(196, 255, 0, 0.3);
+}
+
+.diagnostic-option-radio-selected {
+	border-color: var(--color-neon-green) !important;
+	background-color: rgba(196, 255, 0, 0.2);
+	box-shadow: 0 0 15px rgba(196, 255, 0, 0.5);
+}
+
+.diagnostic-option-radio-selected .diagnostic-option-radio-inner {
+	background-color: var(--color-neon-green) !important;
+}
+
+.diagnostic-option-selected .diagnostic-option-text {
+	color: white !important;
+}
+
+/* Navigation buttons */
+.diagnostic-navigation {
+	margin-top: 50px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 20px;
+}
+
+.diagnostic-nav-button {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 18px 32px;
+	border: 2px solid rgba(255, 255, 255, 0.2);
+	border-radius: 50px;
+	background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%);
+	backdrop-filter: blur(10px);
+	color: white;
+	font-weight: 700;
+	font-size: 1.1rem;
+	cursor: pointer;
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+.diagnostic-nav-button:hover:not(:disabled) {
+	border-color: var(--color-neon-green);
+	background: linear-gradient(135deg, rgba(196, 255, 0, 0.2) 0%, rgba(196, 255, 0, 0.1) 100%);
+	transform: translateY(-3px);
+	box-shadow: 0 10px 30px rgba(196, 255, 0, 0.3);
+}
+
+.diagnostic-nav-button-next {
+	background: linear-gradient(135deg, var(--color-pink) 0%, var(--color-magenta) 100%);
+	border-color: var(--color-pink);
+	box-shadow: 0 10px 30px rgba(255, 27, 141, 0.3);
+}
+
+.diagnostic-nav-button-next:hover:not(:disabled) {
+	background: linear-gradient(135deg, var(--color-neon-green) 0%, var(--color-yellow) 100%);
+	border-color: var(--color-neon-green);
+	color: var(--color-black);
+	box-shadow: 0 15px 40px rgba(196, 255, 0, 0.5);
+}
+
+.diagnostic-nav-button-disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+	background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+	border-color: rgba(255, 255, 255, 0.1);
+	box-shadow: none;
+}
+
+.diagnostic-nav-button-disabled:hover {
+	transform: none;
+	box-shadow: none;
+	background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+}
+
+.diagnostic-nav-button:disabled {
+	cursor: not-allowed;
+}
+
+@media (max-width: 640px) {
+	.diagnostic-navigation {
+		flex-direction: column;
+		gap: 15px;
+	}
+
+	.diagnostic-nav-button {
+		width: 100%;
+		justify-content: center;
+		padding: 16px 28px;
+		font-size: 1rem;
+	}
+}
+
 .diagnostic-result-header {
 	text-align: center;
 	margin-bottom: 50px;

@@ -10,11 +10,17 @@ function Navbar({ onNavigate }: NavbarProps) {
 
     const element = document.getElementById(sectionId);
     if (element) {
+      // Se o elemento existe, rola até ele
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
 
-    if (onNavigate) {
-      onNavigate(sectionId);
+      if (onNavigate) {
+        onNavigate(sectionId);
+      }
+    } else {
+      // Se o elemento não existe (estamos no formulário), volta para a home
+      if (onNavigate) {
+        onNavigate(sectionId);
+      }
     }
   };
 

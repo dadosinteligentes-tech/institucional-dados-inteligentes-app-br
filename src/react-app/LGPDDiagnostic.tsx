@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { CheckCircle, AlertCircle, XCircle, ChevronRight, Mail } from 'lucide-react';
+import { CheckCircle, AlertCircle, XCircle, ChevronRight, Mail, ArrowLeft, ArrowRight } from 'lucide-react';
 import Navbar from './Navbar';
 
 const questions = [
@@ -117,20 +117,29 @@ const questions = [
 
 interface LGPDDiagnosticProps {
   onBack?: () => void;
+  onNavigateToHome?: () => void;
 }
 
-export default function LGPDDiagnostic({ onBack }: LGPDDiagnosticProps) {
+export default function LGPDDiagnostic({ onBack, onNavigateToHome }: LGPDDiagnosticProps) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<Record<number, number>>({});
   const [showResult, setShowResult] = useState(false);
 
   const handleAnswer = (questionId: number, points: number) => {
     setAnswers({ ...answers, [questionId]: points });
+  };
 
+  const handleNext = () => {
     if (currentQuestion < questions.length - 1) {
-      setTimeout(() => setCurrentQuestion(currentQuestion + 1), 300);
+      setCurrentQuestion(currentQuestion + 1);
     } else {
-      setTimeout(() => setShowResult(true), 300);
+      setShowResult(true);
+    }
+  };
+
+  const handlePrevious = () => {
+    if (currentQuestion > 0) {
+      setCurrentQuestion(currentQuestion - 1);
     }
   };
 
@@ -205,7 +214,7 @@ export default function LGPDDiagnostic({ onBack }: LGPDDiagnosticProps) {
 
     return (
       <>
-        <Navbar />
+        <Navbar onNavigate={onNavigateToHome} />
         <div className="diagnostic-container">
           <div className="diagnostic-card">
             <div className="diagnostic-result-header">
@@ -276,10 +285,13 @@ export default function LGPDDiagnostic({ onBack }: LGPDDiagnosticProps) {
 
   const question = questions[currentQuestion];
   const progress = ((currentQuestion + 1) / questions.length) * 100;
+  const canGoNext = answers[question.id] !== undefined;
+  const isFirstQuestion = currentQuestion === 0;
+  const isLastQuestion = currentQuestion === questions.length - 1;
 
   return (
     <>
-      <Navbar />
+      <Navbar onNavigate={onNavigateToHome} />
       <div className="diagnostic-container">
         <div className="diagnostic-card">
           <div className="diagnostic-progress-section">
@@ -304,25 +316,49 @@ export default function LGPDDiagnostic({ onBack }: LGPDDiagnosticProps) {
           <h2 className="diagnostic-question">{question.question}</h2>
 
           <div className="diagnostic-options">
-            {question.options.map((option, idx) => (
-              <button
-                key={idx}
-                onClick={() => handleAnswer(question.id, option.points)}
-                className="diagnostic-option-button"
-              >
-                <div className="diagnostic-option-content">
-                  <div className="diagnostic-option-radio">
-                    <div className="diagnostic-option-radio-inner" />
+            {question.options.map((option, idx) => {
+              const isSelected = answers[question.id] === option.points;
+              return (
+                <button
+                  key={idx}
+                  onClick={() => handleAnswer(question.id, option.points)}
+                  className={`diagnostic-option-button ${isSelected ? 'diagnostic-option-selected' : ''}`}
+                >
+                  <div className="diagnostic-option-content">
+                    <div className={`diagnostic-option-radio ${isSelected ? 'diagnostic-option-radio-selected' : ''}`}>
+                      {isSelected && <div className="diagnostic-option-radio-inner" />}
+                    </div>
+                    <span className="diagnostic-option-text">
+                      {option.text}
+                    </span>
                   </div>
-                  <span className="diagnostic-option-text">
-                    {option.text}
-                  </span>
-                </div>
-              </button>
-            ))}
+                </button>
+              );
+            })}
           </div>
 
-          {onBack && currentQuestion === 0 && (
+          <div className="diagnostic-navigation">
+            <button
+              onClick={handlePrevious}
+              disabled={isFirstQuestion}
+              className="diagnostic-nav-button diagnostic-nav-button-prev"
+              style={{ visibility: isFirstQuestion ? 'hidden' : 'visible' }}
+            >
+              <ArrowLeft className="w-5 h-5" />
+              <span>Anterior</span>
+            </button>
+
+            <button
+              onClick={handleNext}
+              disabled={!canGoNext}
+              className={`diagnostic-nav-button diagnostic-nav-button-next ${!canGoNext ? 'diagnostic-nav-button-disabled' : ''}`}
+            >
+              <span>{isLastQuestion ? 'Ver Resultado' : 'Próxima'}</span>
+              <ArrowRight className="w-5 h-5" />
+            </button>
+          </div>
+
+          {onBack && isFirstQuestion && (
             <div className="diagnostic-back-container">
               <button onClick={onBack} className="diagnostic-back-button">
                 Voltar ao Início

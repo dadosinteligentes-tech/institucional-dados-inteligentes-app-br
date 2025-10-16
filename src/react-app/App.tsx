@@ -46,12 +46,18 @@ function App() {
 	};
 
 	if (showDiagnostic) {
-		return <LGPDDiagnostic onBack={handleBackToHome} />;
+		return <LGPDDiagnostic onBack={handleBackToHome} onNavigateToHome={handleBackToHome} />;
 	}
 
 	return (
 		<>
-			<Navbar />
+			<Navbar onNavigate={(sectionId) => {
+				// Navegação normal quando na página principal
+				const element = document.getElementById(sectionId);
+				if (element) {
+					element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+				}
+			}} />
 
 			{/* Hero Section */}
 			<section className="hero" id="hero">
