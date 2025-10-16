@@ -6,13 +6,13 @@ import HeroBackground3D from "./HeroBackground3D";
 import logo from "./assets/logo-marca-dadosinteligentes.svg";
 import { useScrollAnimation } from "./useScrollAnimation";
 import { useGSAPTextAnimation } from "./useGSAPTextAnimation";
+import { useTechAnimation, useTechTitleAnimation } from "./useTechAnimation";
 
 function App() {
 	const [showDiagnostic, setShowDiagnostic] = useState(false);
 
 	// Refs for scroll animations
 	const heroRef = useScrollAnimation();
-	const techRef = useScrollAnimation();
 	const transformationRef = useScrollAnimation();
 	const servicesRef = useScrollAnimation();
 	const journeyRef = useScrollAnimation();
@@ -26,6 +26,10 @@ function App() {
 	const journeyTitleRef = useGSAPTextAnimation<HTMLHeadingElement>({ type: 'chars', duration: 0.8, stagger: 0.02 });
 	const caseStudyTitleRef = useGSAPTextAnimation<HTMLHeadingElement>({ type: 'reveal', duration: 1.5 });
 	const finalCTATitleRef = useGSAPTextAnimation<HTMLHeadingElement>({ type: 'split', duration: 1, stagger: 0.04 });
+
+	// Refs for tech section animations
+	const techContainerRef = useTechAnimation();
+	const techTitleRef = useTechTitleAnimation();
 
 	const scrollToCTA = () => {
 		document.getElementById('cta')?.scrollIntoView({ behavior: 'smooth' });
@@ -65,8 +69,8 @@ function App() {
 			{/* Trust Bar */}
 			<section className="trust-bar">
 				<div className="container">
-					<p>Tecnologias de Engenharia de Dados que dominamos</p>
-					<div ref={techRef} className="tech-logos slide-up stagger-children">
+					<p ref={techTitleRef}>Tecnologias de Engenharia de Dados que dominamos</p>
+					<div ref={techContainerRef} className="tech-logos">
 						<div className="tech-logo">
 							<img src="https://www.vectorlogo.zone/logos/oracle/oracle-icon.svg" alt="Oracle" />
 						</div>

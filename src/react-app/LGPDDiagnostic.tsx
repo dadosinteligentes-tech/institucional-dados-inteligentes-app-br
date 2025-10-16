@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { CheckCircle, AlertCircle, XCircle, ChevronRight } from 'lucide-react';
+import { CheckCircle, AlertCircle, XCircle, ChevronRight, Mail } from 'lucide-react';
+import Navbar from './Navbar';
 
 const questions = [
   {
@@ -203,49 +204,73 @@ export default function LGPDDiagnostic({ onBack }: LGPDDiagnosticProps) {
     const result = getResultMessage(percentage);
 
     return (
-      <div className="diagnostic-container">
-        <div className="diagnostic-card">
-          <div className="diagnostic-result-header">
-            <div className="diagnostic-icon-container">{result.icon}</div>
-            <h2 className="diagnostic-title">Resultado do Diagnóstico</h2>
-            <div className="diagnostic-percentage">{percentage.toFixed(0)}%</div>
-            <div className={`diagnostic-level diagnostic-level-${result.color}`}>
-              Nível: {result.level}
+      <>
+        <Navbar />
+        <div className="diagnostic-container">
+          <div className="diagnostic-card">
+            <div className="diagnostic-result-header">
+              <div className="diagnostic-icon-container">{result.icon}</div>
+              <h2 className="diagnostic-title">Resultado do Diagnóstico</h2>
+              <div className="diagnostic-percentage">{percentage.toFixed(0)}%</div>
+              <div className={`diagnostic-level diagnostic-level-${result.color}`}>
+                Nível: {result.level}
+              </div>
+            </div>
+
+            <div className="diagnostic-message-box">
+              <p className="diagnostic-message">{result.message}</p>
+            </div>
+
+            <div className="diagnostic-recommendations">
+              <h3 className="diagnostic-recommendations-title">Recomendações Prioritárias:</h3>
+              <ul className="diagnostic-recommendations-list">
+                {result.recommendations.map((rec, idx) => (
+                  <li key={idx} className="diagnostic-recommendation-item">
+                    <ChevronRight className="diagnostic-chevron" />
+                    <span>{rec}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="diagnostic-actions">
+              <button onClick={resetQuiz} className="diagnostic-button">
+                Refazer Diagnóstico
+              </button>
+              {onBack && (
+                <button onClick={onBack} className="diagnostic-button diagnostic-button-secondary">
+                  Voltar ao Início
+                </button>
+              )}
+            </div>
+
+            <div className="diagnostic-score-text">
+              Pontuação: {total} de 100 pontos possíveis
+            </div>
+
+            <div className="diagnostic-contact-section">
+              <div className="diagnostic-contact-header">
+                <Mail className="w-8 h-8 text-pink-600" />
+                <h3 className="diagnostic-contact-title">Precisa de Ajuda Especializada?</h3>
+              </div>
+              <p className="diagnostic-contact-text">
+                Nossa equipe está pronta para ajudar sua empresa a alcançar a conformidade com a LGPD
+                e transformar seus dados em ativos estratégicos.
+              </p>
+              <a
+                href={`mailto:contato@dadosinteligentes.app.br?subject=Diagnóstico LGPD - Solicitação de Contato&body=Olá, acabei de realizar o diagnóstico de maturidade em LGPD e gostaria de conversar sobre como a Dados Inteligentes pode ajudar minha empresa.%0D%0A%0D%0AMinha pontuação foi: ${total} pontos (${percentage.toFixed(0)}%)%0D%0ANível: ${result.level}`}
+                className="diagnostic-contact-button"
+              >
+                <Mail className="w-5 h-5" />
+                <span>Entrar em Contato por E-mail</span>
+              </a>
+              <p className="diagnostic-contact-email">
+                contato@dadosinteligentes.app.br
+              </p>
             </div>
           </div>
-
-          <div className="diagnostic-message-box">
-            <p className="diagnostic-message">{result.message}</p>
-          </div>
-
-          <div className="diagnostic-recommendations">
-            <h3 className="diagnostic-recommendations-title">Recomendações Prioritárias:</h3>
-            <ul className="diagnostic-recommendations-list">
-              {result.recommendations.map((rec, idx) => (
-                <li key={idx} className="diagnostic-recommendation-item">
-                  <ChevronRight className="diagnostic-chevron" />
-                  <span>{rec}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="diagnostic-actions">
-            <button onClick={resetQuiz} className="diagnostic-button">
-              Refazer Diagnóstico
-            </button>
-            {onBack && (
-              <button onClick={onBack} className="diagnostic-button diagnostic-button-secondary">
-                Voltar ao Início
-              </button>
-            )}
-          </div>
-
-          <div className="diagnostic-score-text">
-            Pontuação: {total} de 100 pontos possíveis
-          </div>
         </div>
-      </div>
+      </>
     );
   }
 
@@ -253,56 +278,59 @@ export default function LGPDDiagnostic({ onBack }: LGPDDiagnosticProps) {
   const progress = ((currentQuestion + 1) / questions.length) * 100;
 
   return (
-    <div className="diagnostic-container">
-      <div className="diagnostic-card">
-        <div className="diagnostic-progress-section">
-          <div className="diagnostic-progress-text">
-            <span>Questão {currentQuestion + 1} de {questions.length}</span>
-            <span>{progress.toFixed(0)}% concluído</span>
+    <>
+      <Navbar />
+      <div className="diagnostic-container">
+        <div className="diagnostic-card">
+          <div className="diagnostic-progress-section">
+            <div className="diagnostic-progress-text">
+              <span>Questão {currentQuestion + 1} de {questions.length}</span>
+              <span>{progress.toFixed(0)}% concluído</span>
+            </div>
+            <div className="diagnostic-progress-bar-bg">
+              <div
+                className="diagnostic-progress-bar"
+                style={{ width: `${progress}%` }}
+              />
+            </div>
           </div>
-          <div className="diagnostic-progress-bar-bg">
-            <div
-              className="diagnostic-progress-bar"
-              style={{ width: `${progress}%` }}
-            />
+
+          <div className="diagnostic-category-badge-container">
+            <span className="diagnostic-category-badge">
+              {question.category}
+            </span>
           </div>
-        </div>
 
-        <div className="diagnostic-category-badge-container">
-          <span className="diagnostic-category-badge">
-            {question.category}
-          </span>
-        </div>
+          <h2 className="diagnostic-question">{question.question}</h2>
 
-        <h2 className="diagnostic-question">{question.question}</h2>
-
-        <div className="diagnostic-options">
-          {question.options.map((option, idx) => (
-            <button
-              key={idx}
-              onClick={() => handleAnswer(question.id, option.points)}
-              className="diagnostic-option-button"
-            >
-              <div className="diagnostic-option-content">
-                <div className="diagnostic-option-radio">
-                  <div className="diagnostic-option-radio-inner" />
+          <div className="diagnostic-options">
+            {question.options.map((option, idx) => (
+              <button
+                key={idx}
+                onClick={() => handleAnswer(question.id, option.points)}
+                className="diagnostic-option-button"
+              >
+                <div className="diagnostic-option-content">
+                  <div className="diagnostic-option-radio">
+                    <div className="diagnostic-option-radio-inner" />
+                  </div>
+                  <span className="diagnostic-option-text">
+                    {option.text}
+                  </span>
                 </div>
-                <span className="diagnostic-option-text">
-                  {option.text}
-                </span>
-              </div>
-            </button>
-          ))}
-        </div>
-
-        {onBack && currentQuestion === 0 && (
-          <div className="diagnostic-back-container">
-            <button onClick={onBack} className="diagnostic-back-button">
-              Voltar ao Início
-            </button>
+              </button>
+            ))}
           </div>
-        )}
+
+          {onBack && currentQuestion === 0 && (
+            <div className="diagnostic-back-container">
+              <button onClick={onBack} className="diagnostic-back-button">
+                Voltar ao Início
+              </button>
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }

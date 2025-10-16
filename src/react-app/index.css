@@ -543,6 +543,7 @@ body {
 	gap: 30px;
 	max-width: 1400px;
 	margin: 0 auto;
+	perspective: 1000px;
 }
 
 .tech-logo {
@@ -557,10 +558,13 @@ body {
 	justify-content: center;
 	min-width: 100px;
 	height: 100px;
-	transition: all 0.3s ease;
+	cursor: pointer;
 	position: relative;
 	overflow: hidden;
 	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+	transform-style: preserve-3d;
+	will-change: transform;
+	backface-visibility: hidden;
 }
 
 .tech-logo::before {
@@ -570,20 +574,45 @@ body {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background: linear-gradient(135deg, var(--color-neon-green) 0%, var(--color-yellow) 100%);
+	background: linear-gradient(135deg, var(--color-pink), var(--color-magenta));
 	opacity: 0;
-	transition: opacity 0.3s ease;
+	transition: opacity 0.4s ease;
 	z-index: 0;
+	border-radius: 20px;
 }
 
-.tech-logo:hover::before {
+.tech-logo::after {
+	content: '';
+	position: absolute;
+	top: -50%;
+	left: -50%;
+	width: 200%;
+	height: 200%;
+	background: radial-gradient(circle, rgba(196, 255, 0, 0.3) 0%, transparent 70%);
+	opacity: 0;
+	transition: opacity 0.4s ease;
+	z-index: 1;
+	pointer-events: none;
+}
+
+.tech-logo-active::before {
 	opacity: 0.15;
 }
 
-.tech-logo:hover {
-	transform: translateY(-5px) scale(1.05);
-	border-color: var(--color-neon-green);
-	box-shadow: 0 15px 40px rgba(196, 255, 0, 0.3);
+.tech-logo-active::after {
+	opacity: 1;
+	animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+	0%, 100% {
+		transform: scale(1);
+		opacity: 0.3;
+	}
+	50% {
+		transform: scale(1.2);
+		opacity: 1;
+	}
 }
 
 .tech-logo img {
@@ -593,7 +622,9 @@ body {
 	height: auto;
 	object-fit: contain;
 	position: relative;
-	z-index: 1;
+	z-index: 2;
+	transition: filter 0.4s ease;
+	will-change: filter, transform;
 }
 
 /* Transformation Section */
@@ -1476,6 +1507,75 @@ footer {
 	font-size: 1rem;
 	color: rgba(255, 255, 255, 0.5);
 	text-align: center;
+	font-weight: 600;
+}
+
+/* Contact Section */
+.diagnostic-contact-section {
+	margin-top: 50px;
+	padding: 40px;
+	background: linear-gradient(135deg, rgba(255, 27, 141, 0.1) 0%, rgba(196, 255, 0, 0.05) 100%);
+	border-radius: 20px;
+	border: 2px solid rgba(255, 27, 141, 0.3);
+	text-align: center;
+}
+
+.diagnostic-contact-header {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 16px;
+	margin-bottom: 20px;
+}
+
+.diagnostic-contact-title {
+	font-size: 1.8rem;
+	font-weight: 700;
+	color: white;
+	margin: 0;
+}
+
+.diagnostic-contact-text {
+	font-size: 1.1rem;
+	color: rgba(255, 255, 255, 0.8);
+	line-height: 1.6;
+	margin-bottom: 30px;
+	max-width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.diagnostic-contact-button {
+	display: inline-flex;
+	align-items: center;
+	gap: 12px;
+	padding: 18px 40px;
+	background: linear-gradient(135deg, var(--color-pink) 0%, var(--color-magenta) 100%);
+	color: white;
+	text-decoration: none;
+	border-radius: 50px;
+	font-weight: 700;
+	font-size: 1.1rem;
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	box-shadow: 0 10px 30px rgba(255, 27, 141, 0.3);
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+.diagnostic-contact-button:hover {
+	transform: translateY(-5px) scale(1.05);
+	box-shadow: 0 20px 50px rgba(255, 27, 141, 0.5);
+	background: linear-gradient(135deg, var(--color-magenta) 0%, var(--color-pink) 100%);
+}
+
+.diagnostic-contact-button:active {
+	transform: translateY(-2px) scale(1.02);
+}
+
+.diagnostic-contact-email {
+	margin-top: 20px;
+	font-size: 1rem;
+	color: rgba(255, 255, 255, 0.6);
 	font-weight: 600;
 }
 
