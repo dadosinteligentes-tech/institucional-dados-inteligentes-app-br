@@ -1,8 +1,11 @@
 import { useState } from "react";
 import "./index.css";
 import LGPDDiagnostic from "./LGPDDiagnostic";
+import Navbar from "./Navbar";
+import HeroBackground3D from "./HeroBackground3D";
 import logo from "./assets/logo-marca-dadosinteligentes.svg";
 import { useScrollAnimation } from "./useScrollAnimation";
+import { useGSAPTextAnimation } from "./useGSAPTextAnimation";
 
 function App() {
 	const [showDiagnostic, setShowDiagnostic] = useState(false);
@@ -15,6 +18,14 @@ function App() {
 	const journeyRef = useScrollAnimation();
 	const caseStudyRef = useScrollAnimation();
 	const finalCTARef = useScrollAnimation();
+
+	// Refs for GSAP text animations
+	const heroTitleRef = useGSAPTextAnimation<HTMLHeadingElement>({ type: 'split', duration: 1.2, stagger: 0.05 });
+	const transformationTitleRef = useGSAPTextAnimation<HTMLHeadingElement>({ type: 'fadeUp', duration: 1 });
+	const servicesTitleRef = useGSAPTextAnimation<HTMLHeadingElement>({ type: 'slideIn', duration: 1 });
+	const journeyTitleRef = useGSAPTextAnimation<HTMLHeadingElement>({ type: 'chars', duration: 0.8, stagger: 0.02 });
+	const caseStudyTitleRef = useGSAPTextAnimation<HTMLHeadingElement>({ type: 'reveal', duration: 1.5 });
+	const finalCTATitleRef = useGSAPTextAnimation<HTMLHeadingElement>({ type: 'split', duration: 1, stagger: 0.04 });
 
 	const scrollToCTA = () => {
 		document.getElementById('cta')?.scrollIntoView({ behavior: 'smooth' });
@@ -36,13 +47,13 @@ function App() {
 
 	return (
 		<>
+			<Navbar />
+
 			{/* Hero Section */}
-			<section className="hero">
+			<section className="hero" id="hero">
+				<HeroBackground3D />
 				<div ref={heroRef} className="container fade-in">
-					<div className="hero-logo">
-						<img src={logo} alt="Dados Inteligentes" />
-					</div>
-					<h1>Proteja-se de multas da LGPD e construa a base para uma empresa guiada por dados</h1>
+					<h1 ref={heroTitleRef}>Proteja-se de multas da LGPD e construa a base para uma empresa guiada por dados</h1>
 					<p>Da conformidade legal à inteligência de negócio. Soluções completas em LGPD, Engenharia de Dados e Desenvolvimento de Software para PMEs.</p>
 					<button className="cta-button" onClick={scrollToCTA}>
 						Diagnóstico de Maturidade de Dados & LGPD Gratuito
@@ -124,9 +135,9 @@ function App() {
 			</section>
 
 			{/* Transformation Section */}
-			<section className="transformation">
+			<section className="transformation" id="transformation">
 				<div className="container">
-					<h2>A LGPD não é o fim da linha. É o começo de tudo.</h2>
+					<h2 ref={transformationTitleRef}>A LGPD não é o fim da linha. É o começo de tudo.</h2>
 					<div ref={transformationRef} className="transformation-grid scale-up stagger-children">
 						<div className="transformation-card card-security">
 							<h3><span className="icon">🛡️</span> Primeiro, a Segurança</h3>
@@ -146,9 +157,9 @@ function App() {
 			</section>
 
 			{/* Services Section */}
-			<section className="services">
+			<section className="services" id="services">
 				<div className="container">
-					<h2>Nossa expertise, seus resultados</h2>
+					<h2 ref={servicesTitleRef}>Nossa expertise, seus resultados</h2>
 					<div ref={servicesRef} className="services-grid slide-up stagger-children">
 						<div className="service-card">
 							<h3>Conformidade & Governança de Dados</h3>
@@ -167,9 +178,9 @@ function App() {
 			</section>
 
 			{/* Journey Section */}
-			<section className="journey">
+			<section className="journey" id="journey">
 				<div className="container">
-					<h2>Sua jornada de transformação de dados em 4 fases</h2>
+					<h2 ref={journeyTitleRef}>Sua jornada de transformação de dados em 4 fases</h2>
 					<div ref={journeyRef} className="journey-steps slide-up stagger-children">
 						<div className="step">
 							<div className="step-number">1</div>
@@ -196,9 +207,9 @@ function App() {
 			</section>
 
 			{/* Case Study */}
-			<section className="case-study">
+			<section className="case-study" id="case-study">
 				<div ref={caseStudyRef} className="container slide-up">
-					<h2>Como uma empresa saiu do risco de multas para um aumento de 20% em eficiência</h2>
+					<h2 ref={caseStudyTitleRef}>Como uma empresa saiu do risco de multas para um aumento de 20% em eficiência</h2>
 					<div className="case-content">
 						<h3>O Desafio</h3>
 						<p>A empresa nos procurou preocupada com a LGPD e com relatórios manuais que levavam dias para serem feitos. Havia risco real de autuação e a gestão operava no escuro, sem dados confiáveis.</p>
@@ -219,7 +230,7 @@ function App() {
 			{/* Final CTA */}
 			<section className="final-cta" id="cta">
 				<div ref={finalCTARef} className="container scale-up">
-					<h2>Pronto para ter segurança jurídica e dados que trabalham para você?</h2>
+					<h2 ref={finalCTATitleRef}>Pronto para ter segurança jurídica e dados que trabalham para você?</h2>
 					<p>Agende seu Diagnóstico de Maturidade de Dados & LGPD. É gratuito e o primeiro passo para transformar seu negócio.</p>
 					<button className="cta-button" onClick={handleCTA}>
 						Receber meu Diagnóstico Gratuito
