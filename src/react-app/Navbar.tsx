@@ -28,9 +28,9 @@ function Navbar({ onNavigate }: NavbarProps) {
     { id: 'hero', label: 'Início' },
     { id: 'transformation', label: 'Transformação' },
     { id: 'services', label: 'Serviços' },
+    { id: 'products', label: 'Produtos' },
     { id: 'journey', label: 'Jornada' },
     { id: 'case-study', label: 'Case' },
-    { id: 'cta', label: 'Diagnóstico' },
   ];
 
   return (
@@ -55,14 +55,11 @@ function Navbar({ onNavigate }: NavbarProps) {
             ))}
             <li className="navbar-item">
               <a
-                href="/blog"
-                className="navbar-link navbar-link-blog"
-                onClick={(e) => {
-                  e.preventDefault();
-                  alert('Página de Blog em construção');
-                }}
+                href="#cta"
+                className="navbar-link navbar-link-diagnostic"
+                onClick={(e) => handleNavClick(e, 'cta')}
               >
-                Blog
+                Diagnóstico
               </a>
             </li>
           </ul>

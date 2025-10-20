@@ -15,6 +15,7 @@ function App() {
 	const heroRef = useScrollAnimation();
 	const transformationRef = useScrollAnimation();
 	const servicesRef = useScrollAnimation();
+	const productsRef = useScrollAnimation();
 	const journeyRef = useScrollAnimation();
 	const caseStudyRef = useScrollAnimation();
 	const finalCTARef = useScrollAnimation();
@@ -23,6 +24,7 @@ function App() {
 	const heroTitleRef = useGSAPTextAnimation<HTMLHeadingElement>({ type: 'split', duration: 1.2, stagger: 0.05 });
 	const transformationTitleRef = useGSAPTextAnimation<HTMLHeadingElement>({ type: 'fadeUp', duration: 1 });
 	const servicesTitleRef = useGSAPTextAnimation<HTMLHeadingElement>({ type: 'slideIn', duration: 1 });
+	const productsTitleRef = useGSAPTextAnimation<HTMLHeadingElement>({ type: 'fadeUp', duration: 1 });
 	const journeyTitleRef = useGSAPTextAnimation<HTMLHeadingElement>({ type: 'chars', duration: 0.8, stagger: 0.02 });
 	const caseStudyTitleRef = useGSAPTextAnimation<HTMLHeadingElement>({ type: 'reveal', duration: 1.5 });
 	const finalCTATitleRef = useGSAPTextAnimation<HTMLHeadingElement>({ type: 'split', duration: 1, stagger: 0.04 });
@@ -182,6 +184,40 @@ function App() {
 						<div className="service-card">
 							<h3>Desenvolvimento de Software Sob Medida</h3>
 							<p>Criação de aplicações web e sistemas customizados para otimizar sua operação. Soluções que se adaptam perfeitamente ao seu negócio.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			{/* Products Section */}
+			<section className="products" id="products">
+				<div className="container">
+					<h2 ref={productsTitleRef}>Produtos que já desenvolvemos</h2>
+					<p className="products-intro">Conheça algumas das soluções tecnológicas que criamos para otimizar processos e impulsionar resultados</p>
+					<div ref={productsRef} className="products-grid slide-up stagger-children">
+						<div className="product-card">
+							<div className="product-icon">🔄</div>
+							<h3>Workflow (N8n)</h3>
+							<p>Plataforma de automação de processos e integração de sistemas. Conecte aplicações, automatize tarefas repetitivas e otimize fluxos de trabalho complexos.</p>
+							<a href="https://workflow.dadosinteligentes.app.br" target="_blank" rel="noopener noreferrer" className="product-link">
+								Acessar Workflow
+							</a>
+						</div>
+						<div className="product-card">
+							<div className="product-icon">🛡️</div>
+							<h3>Message Shield</h3>
+							<p>Sistema inteligente de proteção e gerenciamento de mensagens. Filtragem avançada, análise de conteúdo e conformidade com políticas de comunicação.</p>
+							<a href="https://mensagem.dadosinteligentes.app.br/" target="_blank" rel="noopener noreferrer" className="product-link">
+								Acessar Message Shield
+							</a>
+						</div>
+						<div className="product-card">
+							<div className="product-icon">📊</div>
+							<h3>Datafisco</h3>
+							<p>Solução completa para gestão fiscal e análise de dados tributários. Simplifique obrigações acessórias e tenha controle total da sua operação fiscal.</p>
+							<a href="https://datafisco.dadosinteligentes.app.br/" target="_blank" rel="noopener noreferrer" className="product-link">
+								Acessar Datafisco
+							</a>
 						</div>
 					</div>
 				</div>
