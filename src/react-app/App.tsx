@@ -196,6 +196,14 @@ function App() {
 					<p className="products-intro">Conheça algumas das soluções tecnológicas que criamos para otimizar processos e impulsionar resultados</p>
 					<div ref={productsRef} className="products-grid slide-up stagger-children">
 						<div className="product-card">
+							<div className="product-icon">📅</div>
+							<h3>Maestro Scheduler</h3>
+							<p>Plataforma de agendamento de aulas conectando profissionais e alunos. Gerencie horários, organize sua agenda e facilite o contato entre instrutores e estudantes.</p>
+							<a href="https://maestro.dadosinteligentes.app.br/" target="_blank" rel="noopener noreferrer" className="product-link">
+								Acessar Maestro Scheduler
+							</a>
+						</div>
+						<div className="product-card">
 							<div className="product-icon">🔄</div>
 							<h3>Workflow (N8n)</h3>
 							<p>Plataforma de automação de processos e integração de sistemas. Conecte aplicações, automatize tarefas repetitivas e otimize fluxos de trabalho complexos.</p>
